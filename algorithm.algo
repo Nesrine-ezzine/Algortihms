@@ -1,0 +1,20 @@
+VAR
+str:STRING:= "Ceci est un algorithme."
+charCounter,vowelCounter,wordCounter:INTEGER:=0
+
+BEGIN
+FOR i FROM 0 TO str.length-1 STEP 1 DO
+    charCounter:=charCounter+1
+    IF (str.charAt(i)='a' OR str.charAt(i)='e' OR str.charAt(i)='i' OR str.charAt(i)='o' OR str.charAt(i)='u') 
+    THEN
+        vowelCounter:= vowelCounter+1;   
+    ELSE
+        IF (str.charAt(i)=' ')
+        THEN 
+            wordCounter:= wordCounter+1;
+    END_IF
+END_FOR
+Write (wordCounter)
+Write (vowelCounter)
+Write (charCounter)
+END

@@ -1,0 +1,29 @@
+VAR
+arr1 : ARRAY_OF INTEGER[4] := {12,13,6,10}
+arr2 : ARRAY_OF INTEGER[4] := {13,10,16,15}
+i,j : INTEGER
+sum : INTEGER := 0
+htab: HASH_TABLE<INTEGER,INTEGER>
+count: INTEGER := 1
+
+BEGIN
+    FOR i FROM 0 TO arr1.length-1 STEP 1  DO
+        FOR j FROM 0 TO arr2.length-1 STEP 1  DO
+            IF (arr1[i]=arr2[j]) THEN
+                count=count+1
+            END_IF
+        END_FOR
+        htab.insert(arr1[i],count)
+    END_FOR
+
+    
+    FOR j FROM 0 TO arr2.length-1 STEP 1  DO
+        FOR i FROM 0 TO arr1.length-1 STEP 1  DO
+            IF (!arr2.lookup(j)) THEN
+                IF (arr2[j]=arr1[i]) THEN
+                    count=count+1
+                END_IF
+            END_IF
+        END_FOR
+    END_FOR
+END
