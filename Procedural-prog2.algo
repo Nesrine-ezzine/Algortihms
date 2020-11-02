@@ -1,28 +1,28 @@
-PROCEDURE dot_product(v1, v2: ARRAY_OF_INTEGERS, var dot: INTEGER)
-
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER) : INTEGER
 VAR
-    i : INTEGER;
+    i, dot : INTEGER;
 BEGIN
     dot :=0;
     i:=0;
     IF (v1.length <> v2.length) THEN
         Write("vectors with different sizes we cannot calculate dot product");
-        dot := NaN;
+        RETURN NaN;
     END_IF
     WHILE (i <v1.length ) DO
         dot := dot + v1[i]*v2[i];
     END_WHILE
+    RETURN dot ;
 END
 ALGORITHM orth_vectors
 VAR
     v1,v2 : ARRAY_OF INTEGER [50];
     dot : INTEGER;
-BEGIN 
+BEGIN
     n1 := read_size();
     read_array(n1,v1);
     n2 := read_size();
     read_array(n2,v2);
-    dot_product(v1,v2,dot);
+    dot := dot_product(v1,v2);
     IF (dot = 0) THEN
         Write("V1 and V2 are orthogonal");
     ELSE
